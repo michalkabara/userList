@@ -5,7 +5,7 @@ const UserList = () => {
   const {userList} = useGlobalContext()
 
   return (
-    <div>
+    <>
       {userList.map(user => {
         return (
           <div>
@@ -14,7 +14,7 @@ const UserList = () => {
           </div>
         )
       })}
-    </div>
+    </>
   )
 }
 

@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import {CloseCircle} from 'iconsax-react'
 import {useGlobalContext} from '../Context'
+import ReactDOM from 'react-dom'
 
 const Modal = props => {
   const {setShowModal} = useGlobalContext()
 
-  return (
+  return ReactDOM.createPortal(
     <Overlay>
       <StyledModal>
         <div className='title'>
@@ -18,7 +19,8 @@ const Modal = props => {
         </div>
         <p>{props.message}</p>
       </StyledModal>
-    </Overlay>
+    </Overlay>,
+    document.querySelector('#modal')
   )
 }
 

@@ -1,25 +1,18 @@
 import styled from 'styled-components'
 import {useGlobalContext} from '../Context'
+import Button from './Button'
 
 const Form = () => {
-  const {user, handleSubmit, setUser} = useGlobalContext()
+  const {handleSubmit, userAge, userName} = useGlobalContext()
 
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
         <label>Name</label>
-        <input
-          type='text'
-          value={user.name}
-          onChange={e => setUser({...user, name: e.target.value})}
-        />
+        <input type='text' ref={userName} />
         <label>Age</label>
-        <input
-          type='number'
-          value={user.age}
-          onChange={e => setUser({...user, age: e.target.value})}
-        />
-        <button>Add user</button>
+        <input type='number' ref={userAge} />
+        <Button type='submit'>Add user</Button>
       </StyledForm>
     </>
   )
@@ -35,21 +28,6 @@ const StyledForm = styled.form`
     border-radius: 10px;
     border: 1px solid #dadada;
     padding: 10px;
-  }
-  button {
-    background-color: #8c00ff;
-    color: white;
-
-    width: 150px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    :hover {
-      background-color: #7f00e7;
-    }
   }
 `
 
